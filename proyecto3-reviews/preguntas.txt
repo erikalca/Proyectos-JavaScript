@@ -1,0 +1,28 @@
+- PREGUNTAS CONCEPTUALES -
+1. ¿Qué es el evento DOMContentLoaded y por qué se utiliza en este proyecto?
+    Es un evento del DOM que se dispara cuando el documento HTML se carga y parsea completamente por el navegador, pero antes de que carguen recursos externos como hojas de estilo, scripts e imágenes. De esta forma se garantiza que el DOM esté preparado para ser manipulado por JavaScript.
+    Se utiliza en este proyecto para inicializar el contenido de la página en el momento en el que el DOM esté listo, de manera que se evitan errores por intentar acceder o modificar elementos del DOM antes de estar disponibles.
+
+2. ¿Cómo funciona la navegación entre reseñas en este proyecto?
+    En este proyecto, la navegación entre reseñas funciona modificando el índice currentItem, que señala el elemento actual del array reviews. Cada vez que el usuario presiona un botón, el valor de currentItem se actualiza, y la función showPerson() se encarga de reflejar los cambios en la interfaz mostrando la nueva reseña. 
+
+3. ¿Qué hace la función showPerson y cómo se relaciona con el array reviews?
+    La función showPerson se encarga de mostrar en la pantalla la información de una reseña del array reviews según el índice que reciba. Toma los datos de la reseña, como la imagen, el nombre, el trabajo y el texto, y los actualiza en la página. Los botones de anterior, siguiente y aleatorio usan esta función para cambiar y mostrar las reseñas cuando el usuario interactúa con ellos.
+
+4. ¿Qué sucede si el valor de currentItem es mayor que la longitud del array reviews?
+    El índice se reinicia a 0 gracias a la condición en el botón "siguiente", lo que permite que la navegación sea circular.
+
+5. ¿Cómo se genera una reseña aleatoria y qué función se utiliza para ello?
+    Usando Math.random() para generar un número entre 0 y la longitud del array, redondeado hacia abajo con Math.floor(), y luego se llama a showPerson() con ese índice.
+
+6. ¿Qué pasaría si el array reviews estuviera vacío?
+    El código fallaría porque intentaría acceder a propiedades de undefined, lo que generaría errores en la consola.
+
+- MODIFICACIONES SOBRE EL CÓDIGO -
+7. ¿Cómo podrías modificar el código para que la navegación entre reseñas sea automática cada 5 segundos?
+    Para que las reseñas cambien automáticamente, se puede configurar un temporizador que, cada 5 segundos, simule hacer clic en el botón "siguiente". Esto hace que la aplicación avance a la siguiente reseña de forma continua y sin intervención del usuario.
+
+8. ¿Cómo podrías agregar un botón para detener y reanudar la navegación automática?
+    Se podría agregar un botón adicional a la interfaz que permita pausar o reanudar la navegación automática. Cuando se haga clic en este botón:
+    Si la navegación está activa, se detendría, deteniendo el temporizador.
+    Si la navegación está detenida, se reanudaría, volviendo a iniciar el temporizador que cambia las reseñas cada 5 segundos.
